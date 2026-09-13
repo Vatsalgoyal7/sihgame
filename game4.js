@@ -441,6 +441,10 @@ document.getElementById('btnHelp').addEventListener('click', () => {
 
 document.getElementById('btnCloseHelp').addEventListener('click', () => {
   document.getElementById('helpModal').classList.remove('open');
+  // Restore screen prompt as active cue
+  const isGameActive = document.getElementById('screen-game').classList.contains('active');
+  const isComplete = document.getElementById('screen-complete').classList.contains('active');
+  lastScreenCue = isComplete ? CUES.levelComplete : (isGameActive ? CUES.gamePrompt : CUES.intro);
 });
 
 document.getElementById('btnSpeakHelp').addEventListener('click', () => {
@@ -454,6 +458,14 @@ document.getElementById('btnTranslate').addEventListener('click', () => {
   btn.textContent = translationOn ? 'AS' : 'EN';
   btn.classList.toggle('translation-on', translationOn);
   applyTranslation();
+
+  // Instantly replay narration in the newly toggled language
+  const isHelpOpen = document.getElementById('helpModal').classList.contains('open');
+  if (isHelpOpen) {
+    playCue(CUES.helpPrompt);
+  } else if (lastScreenCue) {
+    playCue(lastScreenCue);
+  }
 });
 
 /* Audio Autoplay unlock on first touch */
