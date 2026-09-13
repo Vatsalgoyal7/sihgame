@@ -135,7 +135,7 @@ const TARGETS = [
 ];
 
 /* ============ Game State ============ */
-const TOTAL_TARGETS_TO_COMPLETE = 4;
+const TOTAL_TARGETS_TO_COMPLETE = 10;
 let spottedCount = 0;
 let missedConsecutive = 0;
 let activeTargetEl = null;

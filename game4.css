@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    Etu Cabo! (Look at This!) — Game 4, SmritiSetu
    Sustained Attention / Vigilance Task
    Strictly adheres to SmritiSetu UI/UX doc & Friend Game design:
@@ -216,11 +216,14 @@ body{
 
 .status-dots{
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 220px;
 }
 .status-dot{
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #D5C5A1;
   border: 2px solid var(--card-border);
