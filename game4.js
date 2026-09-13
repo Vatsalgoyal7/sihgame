@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    Etu Cabo! (Look at This!) — Game 4, SmritiSetu
    Sustained Attention / Vigilance Task
    Vanilla JavaScript (No TypeScript)
@@ -160,14 +160,23 @@ function showScreen(id){
 function playCue(cue){
   if(!cue) return;
   lastScreenCue = cue;
-  const filename = translationOn ? cue.en : cue.as;
+  const filename = (translationOn && cue.en) ? cue.en : cue.as;
   const player = document.getElementById('player');
   player.src = AUD_DIR + filename;
+
+  player.onerror = () => {
+    // If translation toggle is on but English clip is missing, fallback to Assamese audio clip
+    if(translationOn && filename !== cue.as && cue.as){
+      player.src = AUD_DIR + cue.as;
+      player.play().catch(() => {});
+    }
+  };
+
   const p = player.play();
   if(p && p.then){
     p.then(() => { audioUnlocked = true; })
      .catch(() => {
-       /* graceful fallback: if ElevenLabs clip is not yet present, UI continues seamlessly */
+       /* Handled by unlockAudioOnFirstTouch */
      });
   }
 }
