@@ -26,8 +26,8 @@ const CUES = {
 
 /* Avatar assets */
 const AVATAR = {
-  gentle: { img: 'avatar_gentle.png', as: 'অৱতাৰ' },
-  happy:  { img: 'avatar_happy.png',  as: 'অৱতাৰ' }
+  gentle: { img: 'avatar_gentle.webp', as: 'অৱতাৰ' },
+  happy:  { img: 'avatar_happy.webp',  as: 'অৱতাৰ' }
 };
 
 /* ---------- Cultural River Targets (Clean inline SVGs for instant crisp display) ---------- */
